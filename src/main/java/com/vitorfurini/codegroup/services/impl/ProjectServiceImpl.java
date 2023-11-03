@@ -1,6 +1,7 @@
 package com.vitorfurini.codegroup.services.impl;
 
 import com.vitorfurini.codegroup.dto.AssociateEmployeeDto;
+import com.vitorfurini.codegroup.entity.Pessoa;
 import com.vitorfurini.codegroup.entity.Projeto;
 import com.vitorfurini.codegroup.enums.StatusEnum;
 import com.vitorfurini.codegroup.repository.PessoaRepository;
@@ -40,6 +41,15 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Projeto save(Projeto projeto) {
+
+        Optional<Pessoa> pessoa = pessoaRepository.findById(projeto.getGerente().getId());
+
+        Projeto projeto1 = modelMapper.map(projeto, Projeto.class);
+
+        pessoa.ifPresent(projeto1::setGerente);
+
+        projeto.setStatus(StatusEnum.INICIADO);
+
         return projectRepository.save(projeto);
     }
 

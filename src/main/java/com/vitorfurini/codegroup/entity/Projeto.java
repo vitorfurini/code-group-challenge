@@ -3,10 +3,8 @@ package com.vitorfurini.codegroup.entity;
 import com.vitorfurini.codegroup.enums.StatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,12 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 @Data
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "PROJETO")
 public class Projeto {
 
@@ -63,5 +59,6 @@ public class Projeto {
         this.id = id;
         this.getGerente().setId(gerente);
     }
+    public Projeto() {}
 
 }

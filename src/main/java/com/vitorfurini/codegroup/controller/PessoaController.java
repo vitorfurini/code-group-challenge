@@ -2,7 +2,6 @@ package com.vitorfurini.codegroup.controller;
 
 import com.vitorfurini.codegroup.dto.PessoaDto;
 import com.vitorfurini.codegroup.entity.Pessoa;
-import com.vitorfurini.codegroup.entity.Projeto;
 import com.vitorfurini.codegroup.exception.custom.ServiceException;
 import com.vitorfurini.codegroup.responses.Response;
 import com.vitorfurini.codegroup.services.PessoaService;
@@ -13,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.validation.Valid;
 
 @RestController()
 @RequestMapping("/api/pessoa")
+@CrossOrigin("*")
 public class PessoaController {
 
     private final PessoaService pessoaService;
@@ -76,7 +76,7 @@ public class PessoaController {
         var response = pessoaService.findById(id);
         if (response.isEmpty()) {
             pessoaService.delete(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.status(204).build();
         } else {
             throw new ServiceException("Não existem pessoas cadastradas com o ID informado.");
         }

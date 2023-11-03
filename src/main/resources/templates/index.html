@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./css/styleIndex.css">
+    <script src="./js/script.js" defer></script>
+    <title>Gestão de Projetos</title>
+    
+    
+</head>
+<body>
+    <header>
+        <h1>Gestão de Projetos</h1>
+    </header>
+
+    <div class="container">
+        <h2>Criar Projeto</h2>
+        <form action="">
+            <label for="nomeProjeto">Nome do Projeto:</label>
+            <input type="text" class="nomeProjeto" id="nomeProjeto" name="nomeProjeto" required>
+
+            <label for="descricaoProjeto">Descrição do Projeto:</label>
+            <textarea id="descricaoProjeto" class="descricaoProjeto" name="descricaoProjeto" rows="4" required></textarea>
+
+            <label for="gerente">Gerente do Projeto:</label>
+            <input type="text" class="gerente" id="gerente" name="gerente" required></textarea>
+
+            <label for="dataInicio">Data de inicio do projeto :</label>
+            <input type="date" id="dataInicio" class="dataInicio" name="dataInicio" required>
+
+            <label for="dataFim">Data fim do projeto :</label>
+            <input type="date" id="dataFim" class="dataFim" name="dataFim" required>
+
+            <label for="dataFimPrevisao">Data previsao de fim do projeto :</label>
+            <input type="date" id="dataFimPrevisao" class="dataFimPrevisao" name="dataFimPrevisao" required>
+
+            <label for="orcamento">Orçamento do projeto :</label>
+            <input type="text" id="orcamento" class="orcamento" name="orcamento" required>
+
+            <button type="submit">Criar Projeto</button>
+        </form>
+
+        <h2>Lista de Projetos</h2>
+
+
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <th class="center">Nome do projeto</th>
+                    <th class="center">Gerente</th>
+                    <th class="center">Data de inicio</th>
+                    <th class="center">Data fim</th>
+                    <th class="center">Data de previsão fim</th>
+                    <th class="center">Ações</th>
+                </thead>
+
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
