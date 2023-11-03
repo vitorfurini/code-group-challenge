@@ -1,44 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
 <head>
-    <title>Gestão de Pessoas</title>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="stylePessoas.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/scriptPessoa.js" defer></script>
+    <title>Gestão de Pessoas</title>
 </head>
+
 <body>
     <header>
         <h1>Gestão de Pessoas</h1>
     </header>
 
     <div class="container">
-        <h2>Criar Pessoa</h2>
-        <form>
-            <label for="nomePessoa">Nome da Pessoa:</label>
-            <input type="text" id="nomePessoa" name="nomePessoa" required>
+        <h2>Criar Pessoas</h2>
+        <form action="">
+            <label for="nomePessoa">Nome do membro:</label>
+            <input type="text" class="nomePessoa" id="nomePessoa" name="nomePessoa" required>
 
-            <label for="emailPessoa">E-mail da Pessoa:</label>
-            <input type="email" id="emailPessoa" name="emailPessoa" required>
+            <label for="cpf">CPF do membro:</label>
+            <input type="text" class="cpf" id="cpf" name="cpf" required>
 
-            <button type="submit">Criar Pessoa</button>
+            <label for="dataNascimento">Data de nascimento :</label>
+            <input type="date" id="dataNascimento" class="dataNascimento" name="dataNascimento" required>
+
+            <label for="isFuncionario">Funcionario ativo:</label>
+            <input type="checkbox" class="isFuncionario" id="isFuncionario" name="isFuncionario" required>
+
+            <button type="submit">Salvar pessoa</button>
         </form>
 
-        <h2>Lista de Pessoas</h2>
-        <ul>
-            <!-- Aqui você pode listar as pessoas existentes, permitindo a edição e exclusão -->
-            <li>
-                Nome: Pessoa 1, E-mail: pessoa1@example.com
-                <a href="#" class="edit-button">Editar</a>
-                <a href="#" class="delete-button">Excluir</a>
-            </li>
-            <li>
-                Nome: Pessoa 2, E-mail: pessoa2@example.com
-                <a href="#" class="edit-button">Editar</a>
-                <a href="#" class="delete-button">Excluir</a>
-            </li>
-            <!-- Adicione mais pessoas conforme necessário -->
-        </ul>
+        <h2>Lista de pessoas cadastradas</h2>
+
+
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <th class="center">ID do Gerente</th>
+                    <th class="center">Nome do Gerente</th>
+                    <th class="center">CPF do Gerente</th>
+                </thead>
+
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

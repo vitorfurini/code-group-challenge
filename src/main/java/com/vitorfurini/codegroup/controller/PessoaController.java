@@ -2,6 +2,7 @@ package com.vitorfurini.codegroup.controller;
 
 import com.vitorfurini.codegroup.dto.PessoaDto;
 import com.vitorfurini.codegroup.entity.Pessoa;
+import com.vitorfurini.codegroup.entity.Projeto;
 import com.vitorfurini.codegroup.exception.custom.ServiceException;
 import com.vitorfurini.codegroup.responses.Response;
 import com.vitorfurini.codegroup.services.PessoaService;
@@ -58,11 +59,18 @@ public class PessoaController {
         }
     }
 
+    @Operation(summary = "Retorna todos os membros que estão registrados na base")
     @GetMapping
-    public ResponseEntity<Object> getAll() {
-        List<PessoaDto> list = pessoaService.findAll();
-        return ResponseEntity.ok().body(list);
-
+    public ResponseEntity<List<PessoaDto>> getAllProjects() {
+        try {
+            List<PessoaDto> pessoas = pessoaService.findAll();
+            if (pessoas.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(pessoas);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @Operation(summary = "Exclui uma pessoa cadastrada na base")

@@ -15,5 +15,6 @@ public class PessoaDto {
     String cpf;
     Date dataAniversario;
     Boolean funcionario;
+    Long id;
 
 }

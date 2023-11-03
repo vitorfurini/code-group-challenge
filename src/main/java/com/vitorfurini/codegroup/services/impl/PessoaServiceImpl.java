@@ -41,7 +41,7 @@ public class PessoaServiceImpl implements PessoaService {
         var pessoas = pessoaRepository.findAll();
 
         return pessoas.stream().map(pessoa -> new PessoaDto(pessoa.getNome(), pessoa.getCpf(),
-                pessoa.getDataNascimento(), pessoa.getFuncionario())).toList();
+                pessoa.getDataNascimento(), pessoa.getFuncionario(), pessoa.getId())).toList();
     }
 
     @Override

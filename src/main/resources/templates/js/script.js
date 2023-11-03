@@ -39,7 +39,6 @@ function listarProjetos() {
 
         .then(response => response.json())
         .then(data => {
-            // Passo 2: Analise os dados JSON e insira na tabela
             const tableBody = document.querySelector("tbody");
 
             data.forEach(item => {
@@ -59,9 +58,7 @@ function listarProjetos() {
                 cell5.textContent = formateDate(item.dataPrevisaoFim);
 
                 let imgEdit = document.createElement('img');
-                imgEdit.src = '../img/edit.svg'
-                imgEdit.setAttribute("onclick", "editar(" + JSON.stringify(item) + ")")
-                imgEdit.setAttribute("onclick", "openModalBtn()")
+                imgEdit.src = ('../img/edit.svg')
 
 
                 cell6.appendChild(imgEdit);
@@ -73,34 +70,6 @@ function listarProjetos() {
 
             })
         });
-}
-function editar(item) {
-
-    const getElement = (...queries) => document.querySelector(...queries);
-
-    const button = getElement('.open-modal-button');
-    const container = getElement('.modal-container');
-    const modal = getElement('.modal');
-
-    const activeModalClass = 'modal-show';
-
-    const openModal = () => container.classList.add(activeModalClass);
-    const closeModal = () => container.classList.remove(activeModalClass);
-
-    button.addEventListener('click', openModal);
-    container.addEventListener('click', (event) => {
-        if (modal.contains(event.target)) return;
-        document.getElementById('nomeProjeto').value = item.nome;
-        document.getElementById('descricaoProjeto').value = item.descricao;
-        document.getElementById('gerente').value = item.gerente.nome;
-        document.getElementById('orcamento').value = item.orcamento;
-        document.getElementById('dataInicio').value = formateDateToDisplay(item.dataInicio);
-        document.getElementById('dataFim').value = formateDateToDisplay(item.dataFim);
-        document.getElementById('dataPrevisaoFim').value = formateDateToDisplay(item.dataPrevisaoFim);
-
-        closeModal();
-    })
-
 }
 
 function deletar(item) {
@@ -138,7 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+formulario.addEventListener('submit', function (event) {
+    event.preventDefault();
 
+    cadastrarProjetos();
+    limpar();
+
+});
 
 function limpar() {
     InomeProjeto.value = "",
@@ -150,12 +125,3 @@ function limpar() {
         Igerente.value = ""
 
 }
-
-formulario.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    cadastrarProjetos();
-    console.log(listarProjetos());
-    limpar();
-
-});
