@@ -44,5 +44,9 @@ Rode o comando
 
 ./mvnw spring-boot:run<br>
 
+<h2>Para abrir as páginas HTML</h2>
+Vá no diretório do projeto e em templates abra as páginas HTML para testar, tudo irá funcionar se o projeto estiver rodando.
+
+
 <h2>Documentação da API</h2><br>
 http://localhost:8080/swagger-ui.html#/
