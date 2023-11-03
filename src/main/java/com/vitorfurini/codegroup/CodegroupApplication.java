@@ -3,11 +3,11 @@ package com.vitorfurini.codegroup;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication()
 public class CodegroupApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CodegroupApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CodegroupApplication.class, args);
+    }
 
 }
